@@ -1,0 +1,38 @@
+header img {
+	max-height: 50px;
+	float: left;
+}
+
+img {
+	max-width: 100%;
+}
+
+.container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.half {
+	width: 50%;
+}
+
+	.half img {
+		width: 100%;
+	}
+
+@media screen and (max-width: 450px) {
+	.half, .mobile-half {
+		width: 33.3%;
+	}
+}
+
+@media screen and (min-width: 500px) {
+.yes {
+	opacity: 1;
+
+}
+.no {
+	opacity: .5;
+}
+
+}

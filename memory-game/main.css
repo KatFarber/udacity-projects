@@ -1,0 +1,191 @@
+
+
+/* Grid styles */
+.grid {
+	display: grid;
+	grid-gap: 20px;
+	grid-template-columns: 20% 20% 20% 20%;
+}
+
+	.grid .card {
+		height: 100px;
+		width: 100px;
+		border: 1px solid #868686;
+		border-radius: 5px;
+		text-align: center;
+		padding-top: 20px;
+		cursor: pointer;
+	}
+
+		/* Show cards that were flipped */
+		.grid .card[data-visible="true"] i {
+			visibility: visible;
+			opacity: 1;
+		}
+
+		/* Don't show cards that are not flipped */
+		.grid .card[data-visible="false"] i {
+			visibility: hidden;
+			opacity: 0;
+			transition: visibility 0s .2s, opacity .2s linear;
+		}
+
+/* Icon styles */
+.card i {
+	font-size: 70px;
+	font-weight: bold;
+}
+
+	.card i.fa-balance-scale {
+		color: #FF5733;
+	}
+	.card i.fa-biohazard {
+		color: #34DD3E;
+	}
+	.card i.fa-car {
+		color: #1CD7CF;
+	}
+	.card i.fa-coffee {
+		color: #1C84D7;
+	}
+	.card i.fa-flag {
+		color: #9A6FE9;
+	}
+	.card i.fa-igloo {
+		color: #FB1C56;
+	}
+	.card i.fa-poo {
+		color: #BDB80B;
+	}
+	.card i.fa-robot {
+		color: #B8E962;
+	}
+
+/* Scoreboard styles */
+#scoreboard {
+	float: right;
+	position: relative;
+}
+
+	#scoreboard > div {
+		border: 1px solid #868686;
+		width: 40px;
+		float: left;
+	}
+		#scoreboard > div:first-child {
+			border-right: none;
+		}
+		#scoreboard > div:last-child {
+			border-left: none;
+		}
+
+	#scoreboard div div:first-child {
+		line-height: 16px;
+		font-size: 12px;
+		text-align: center;
+		border-bottom: 1px dotted #d3d3d3;
+	}
+	#scoreboard div div:last-child {
+		height: 30px;
+		font-size: 20px;
+		text-align: center;
+		padding-top: 8px;
+	}
+
+		#scoreboard .shake {
+			animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+			transform: translate3d(0, 0, 0);
+			backface-visibility: hidden;
+		}
+
+/* Modal styles */
+.modal {
+	display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.4);
+}
+
+	.modal .modal-inner {
+		background-color: #e9e9e9;
+		margin: 15% auto;
+		padding: 5px 20px;
+		border: 1px solid #5a5a5a;
+		width: 80%;
+	}
+
+		.modal .modal-inner p {
+			margin-bottom: 30px;
+		}
+
+		.modal .modal-inner .buttonRow {
+			background-color: #444;
+			padding: 10px;
+			margin: auto -20px -20px -20px;
+			text-align: center;
+		}
+			.buttonRow button {
+				padding: 8px;
+				border: 1px solid #000;
+				background-color: #1e1e1e;
+				color: #fff;
+				border-radius: 5px;
+				cursor: pointer;
+			}
+
+/* Responsive styles */
+@media only screen and (max-width: 1024px) {
+	.grid {
+		grid-gap: 5px;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.grid {
+		grid-template-columns: 30% 30% 30%;
+	}
+}
+
+/* Shake animation for score */
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+
+  20% {
+  	font-size: 22px;
+  	color: red;
+  	font-weight: bold;
+  }
+
+  50% {
+  	font-size: 25px;
+  }
+
+  80% {
+  	font-size: 22px;
+  }
+
+  100% {
+  	font-size: 20px;
+  	color: inherit;
+  	font-weight: normal;
+  }
+}

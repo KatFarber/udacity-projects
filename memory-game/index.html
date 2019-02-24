@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="preload" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" as="style">
+		<link rel="preload" href="memory.js" as="script">
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Memory Game</title>
+
+		<link rel="stylesheet" href="main.css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+	</head>
+	<body>
+		<aside id='scoreboard'>
+			<div>
+				<div class='title'>Score</div>
+				<div id='score-counter'>10</div>
+			</div>
+			<div>
+				<div class='title'>Turns</div>
+				<div id='turns-counter'></div>
+			</div>
+			<div>
+				<div class='title'>Timer</div>
+				<div id='timer-counter'></div>
+			</div>
+		</aside>
+		<h1>Classic game of "memory"</h1>
+		<p>Click on a card, and then click on another card to match the character. Match all of the cards in as few turns as possible for the highest score!</p>
+
+		<div class='grid'>
+			<div class='card' id='card1'><i class="fas"></i></div>
+			<div class='card' id='card2'><i class="fas"></i></div>
+			<div class='card' id='card3'><i class="fas"></i></div>
+			<div class='card' id='card4'><i class="fas"></i></div>
+
+			<div class='card' id='card5'><i class="fas"></i></div>
+			<div class='card' id='card6'><i class="fas"></i></div>
+			<div class='card' id='card7'><i class="fas"></i></div>
+			<div class='card' id='card8'><i class="fas"></i></div>
+
+			<div class='card' id='card9'><i class="fas"></i></div>
+			<div class='card' id='card10'><i class="fas"></i></div>
+			<div class='card' id='card11'><i class="fas"></i></div>
+			<div class='card' id='card12'><i class="fas"></i></div>
+
+			<div class='card' id='card13'><i class="fas"></i></div>
+			<div class='card' id='card14'><i class="fas"></i></div>
+			<div class='card' id='card15'><i class="fas"></i></div>
+			<div class='card' id='card16'><i class="fas"></i></div>
+		</div>
+		<script src="memory.js"></script>
+
+		<div id='modal' class='modal'>
+			<div class='modal-inner'>
+				<h2>Congratulations!</h2>
+				<p>Your score is <span class='score'></span>. It took <span class='turns'></span> attempts and <span class='time'></span> seconds to complete the game. Keep trying to train your mind and try for the best score!</p>
+				<div class='buttonRow'>
+					<button id='resetGame'>Try Again</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

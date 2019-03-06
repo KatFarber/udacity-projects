@@ -98,6 +98,17 @@
 			backface-visibility: hidden;
 		}
 
+		#mybutton {
+			margin-top: 4px;
+			padding: 8px;
+			border: 1px solid #000;
+			background-color: #1e1e1e;
+			color: #fff;
+			border-radius: 5px;
+			cursor: pointer;
+
+		}
+
 /* Modal styles */
 .modal {
 	display: none;

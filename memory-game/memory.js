@@ -23,6 +23,11 @@ function pageInitialization()
 	document.getElementById('resetGame').addEventListener( 'click', function() {
 		initialize();
 	});
+
+	document.getElementById('mybutton').addEventListener( 'click', function() {
+		clearInterval( currentGame.timerInterval );
+		initialize();
+	});
 }
 
 /**
@@ -40,6 +45,7 @@ function initialize()
 
 	document.getElementById('turns-counter').innerHTML = '0';
 	document.getElementById('timer-counter').innerHTML = '0';
+	document.getElementById('score-counter').innerHTML = '10';
 
 	/* Make sure the modal is not shown if we are starting a new game */
 	document.getElementById('modal').style.display = 'none';
@@ -84,6 +90,12 @@ function initialize()
  */
 function flipCard( event )
 {
+	/* Ignore duplicate clicks */
+	if( event.target.getAttribute('data-visible') == 'true' )
+	{
+		return;
+	}
+
 	/* First, update our counter */
 	currentGame.turns++;
 	document.getElementById('turns-counter').innerHTML = currentGame.turns;

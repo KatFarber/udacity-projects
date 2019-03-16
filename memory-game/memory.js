@@ -26,6 +26,7 @@ function pageInitialization()
 
 	document.getElementById('mybutton').addEventListener( 'click', function() {
 		clearInterval( currentGame.timerInterval );
+		currentGame.timerInterval = null;
 		initialize();
 	});
 }
@@ -70,6 +71,10 @@ function initialize()
 		/* Get a card id and apply this icon */
 		let cardId = allCards.shift() + 1;
 		document.querySelector("#card" + cardId).querySelectorAll('.fas').forEach( function( element ) {
+			for( let icon of icons )
+			{
+				element.classList.remove( 'fa-' + icon );
+			}
 			element.classList.add( 'fa-' + icon );
 			element.setAttribute( 'data-card', icon );
 		});
@@ -77,6 +82,10 @@ function initialize()
 		/* Then do it again - the icon needs to be present twice */
 		cardId = allCards.shift() + 1;
 		document.querySelector("#card" + cardId).querySelectorAll('.fas').forEach( function( element ) {
+			for( let icon of icons )
+			{
+				element.classList.remove( 'fa-' + icon );
+			}
 			element.classList.add( 'fa-' + icon );
 			element.setAttribute( 'data-card', icon );
 		});
@@ -90,11 +99,23 @@ function initialize()
  */
 function flipCard( event )
 {
+	/* Make sure the event target is actually our card */
+	var matches = event.target.className.match( /^fas\s/g );
+	var target	= event.target;
+
+	if( matches && matches.length )
+	{
+		target = event.target.parentElement;
+	}
+
 	/* Ignore duplicate clicks */
-	if( event.target.getAttribute('data-visible') == 'true' )
+	if( target.getAttribute('data-visible') == 'true' )
 	{
 		return;
 	}
+
+	/* Flip the card */
+	target.setAttribute( 'data-visible', 'true' );
 
 	/* First, update our counter */
 	currentGame.turns++;
@@ -109,9 +130,6 @@ function flipCard( event )
 			document.getElementById('timer-counter').innerHTML = parseInt( document.getElementById('timer-counter').innerHTML ) + 1;
 		}, 1000 );
 	}
-
-	/* Flip the card */
-	event.target.setAttribute( 'data-visible', 'true' );
 
 	/* Get a query selector representing the flipped cards */
 	let flippedCards = document.querySelectorAll('[data-visible="true"][data-matched="false"]');
@@ -205,6 +223,7 @@ function showGameCompleteModal()
 {
 	/* Stop our counter */
 	clearInterval( currentGame.timerInterval );
+	currentGame.timerInterval = null;
 
 	/* Show the stats and score */
 	document.querySelectorAll('.score')[0].innerHTML = currentGame.score;
